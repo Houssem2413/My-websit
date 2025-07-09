@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Houssem</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+
+
+</head>
+<body>
+
+
+
+
+    <header>
+        <nav class="navigation">
+            <a href="About Me">About Me</a>
+            <a href="#Blog">Blog</a>
+            <a href="#Skills">Skills</a>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="video-container fade-in">
+            <video autoplay muted loop playsinline controls>
+              <source src="videos/video.mp4.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+          </div>
+
+          <div class="glow-container">
+            <h1 class="glow-text">Hi, I'm a creative coder, designer & editor.</h1>
+          </div>
+
+          <div class="social-icons">
+            <a href="#" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#" target="_blank"><i class="fa-brands fa-x-twitter"></i></a>
+            <a href="#" target="_blank"><i class="fa-brands fa-youtube"></i></a>
+          </div>
+          
+          
+          
+          <a href="#Blog" class="epic-button">Read my articles</a>
+    </section>
+
+
+    <script>
+        // تأثير الكتابة للنص العنوان
+        const text = "Hello, I'm Houssem.";
+        const target = document.querySelector(".typing-text");
+        let i = 0;
+    
+        function typeText() {
+          if (i < text.length) {
+            target.textContent += text.charAt(i);
+            i++;
+            setTimeout(typeText, 60);
+          }
+        }
+    
+        window.onload = typeText;
+      </script>
+
+
+
+
+<section class="about-section" id="About Me">
+  <h2 class="title">About Me</h2>
+  <div class="about-container reverse">
+    <div class="about-content">
+      <p class="intro-text">
+        I'm a passionate creative — blending code, design, and editing into experiences that speak louder than words.  
+        Constantly learning, always building.
+      </p>
+      <blockquote>"Design is not just what it looks like and feels like. Design is how it works."</blockquote>
+      <a href="#Skills" class="about-button">Browse my skills</a>
+    </div>
+    <div class="about-image">
+      <img src="F:\أعمال حسام\موقعي الشخصي\image\تصميم بدون عنوان(2)-Photoroom.png" alt="My Photo">
+    </div>
+  </div>
+</section>
+
+
+<section class="Blog" id="Blog">
+<h2 class="title">Blog</h2>
+<div class="cards-container" id="articles-container"></div>
+
+  <div class="modal" id="modal">
+    <div class="modal-content">
+      <span class="close-btn" onclick="closeModal()">×</span>
+      <h2 id="modal-title"></h2>
+      <p id="modal-content"></p>
+    </div>
+  </div>
+
+  <script>
+    function showModal(title, content) {
+      document.getElementById("modal-title").textContent = title;
+      document.getElementById("modal-content").textContent = content;
+      document.getElementById("modal").style.display = "flex";
+    }
+
+    function closeModal() {
+      document.getElementById("modal").style.display = "none";
+    }
+
+    function renderArticles() {
+      const container = document.getElementById("articles-container");
+      const articles = JSON.parse(localStorage.getItem("articles")) || [];
+      container.innerHTML = "";
+
+      articles.forEach(article => {
+        const card = document.createElement("div");
+        card.className = "card";
+        card.innerHTML = `<h3>${article.title}</h3><p>${article.content.slice(0, 80)}...</p>`;
+        card.onclick = () => showModal(article.title, article.content);
+        container.appendChild(card);
+      });
+    }
+
+    window.onload = renderArticles;
+  </script>
+
+</section>
+
+
+
+
+<section class="Skills" id="Skills">
+  <h2 class="title">Skills</h2>
+  <div class="skills-category">
+    <h2 class="Type-skill">💻programming</h2>
+    <div class="skills-row">
+      <div class="skill-card">
+        <span class="skill-title">HTML</span>
+        <div class="progress"><div class="progress-bar" style="--value: 85%;">85%</div></div>
+      </div>
+      <div class="skill-card">
+        <span class="skill-title">CSS</span>
+        <div class="progress"><div class="progress-bar" style="--value: 85%;">85%</div></div>
+      </div>
+      <div class="skill-card">
+        <span class="skill-title">GDScript</span>
+        <div class="progress"><div class="progress-bar" style="--value: 75%;">75%</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="skills-category">
+    <h2 class="Type-skill">🎨design</h2>
+    <div class="skills-row">
+      <div class="skill-card">
+        <span class="skill-title">Photoshop</span>
+        <div class="progress"><div class="progress-bar" style="--value: 80%;">80%</div></div>
+      </div>
+      <div class="skill-card">
+        <span class="skill-title">Ipis-pint</span>
+        <div class="progress"><div class="progress-bar" style="--value: 80%;">80%</div></div>
+      </div>
+      
+  </div>
+
+  <div class="skills-category">
+    <h2 class="Type-skill">🎬Edit video</h2>
+    <div class="skills-row">
+      <div class="skill-card">
+        <span class="skill-title">Adobe Premiere</span>
+        <div class="progress"><div class="progress-bar" style="--value: 90%;">90%</div></div>
+      </div>
+      <div class="skill-card">
+        <span class="skill-title">Light-Motion</span>
+        <div class="progress"><div class="progress-bar" style="--value: 80%;">80%</div></div>
+      </div>
+      <div class="skill-card">
+        <span class="skill-title">cap-cut</span>
+        <div class="progress"><div class="progress-bar" style="--value: 95%;">95%</div></div>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+
+
+
+
+<footer class="footer">
+  <div class="footer-container">
+    <p>&copy; 2025 Houssem. All rights reserved.</p>
+    <div class="social-icons">
+      <a href="#" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+      <a href="#" target="_blank"><i class="fa-brands fa-x-twitter"></i></a>
+      <a href="#" target="_blank"><i class="fa-brands fa-youtube"></i></a>
+    </div>
+  </div>
+</footer>
+
+
+</body>
+</html>
